@@ -19,8 +19,8 @@ public class ItemBehaviour {
         }
     }
 
-    public void qualityZero() {
-        item.quality = 0;
+    public void setFixedQuality(int fixedAmount) {
+        item.quality = fixedAmount;
     }
 
     public void decreaseSellin() {

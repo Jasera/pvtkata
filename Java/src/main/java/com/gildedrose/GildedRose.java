@@ -2,6 +2,7 @@ package com.gildedrose;
 
 import com.gildedrose.strategy.AgedBrieStrategy;
 import com.gildedrose.strategy.BackStageStrategy;
+import com.gildedrose.strategy.SulfurasStrategy;
 
 class GildedRose {
     public static final String BACK_STAGE_PASS = "Backstage passes to a TAFKAL80ETC concert";
@@ -10,6 +11,7 @@ class GildedRose {
 
     AgedBrieStrategy agedBrieStrategy = new AgedBrieStrategy();
     BackStageStrategy backStageStrategy = new BackStageStrategy();
+    SulfurasStrategy sulfurasStrategy = new SulfurasStrategy();
 
     Item[] items;
 
@@ -26,7 +28,7 @@ class GildedRose {
             } else if (item.name.equals(BACK_STAGE_PASS)) {
                 backStageStrategy.updateItem(itemBehaviour);
             } else if (item.name.equals(SULFURAS)) {
-                item.quality = 80;
+                sulfurasStrategy.updateItem(itemBehaviour);
             } else {
                 itemBehaviour.decreaseQuality();
 

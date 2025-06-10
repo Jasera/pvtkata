@@ -16,7 +16,7 @@ public class BackStageStrategy {
         itemBehaviour.decreaseSellin();
 
         if (itemBehaviour.getSellin() < 0) {
-            itemBehaviour.qualityZero();
+            itemBehaviour.setFixedQuality(0);
         }
     }
 }
