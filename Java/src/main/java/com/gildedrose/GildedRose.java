@@ -12,61 +12,43 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
+            ItemBehaviour itemBehaviour = new ItemBehaviour(item);
+
             if (item.name.equals(AGED_BRIE)) {
-                increaseQuality(item);
+                itemBehaviour.increaseQuality();;
 
-                decreaseSellin(item);
+                itemBehaviour.decreaseSellin();
 
-                if (item.sellIn < 0) {
-                    increaseQuality(item);
+                if (itemBehaviour.getSellin() < 0) {
+                    itemBehaviour.increaseQuality();;
                 }
             } else if (item.name.equals(BACK_STAGE_PASS)) {
-                increaseQuality(item);
+                itemBehaviour.increaseQuality();;
 
-                if (item.sellIn < 11) {
-                    increaseQuality(item);
+                if (itemBehaviour.getSellin() < 11) {
+                    itemBehaviour.increaseQuality();;
                 }
 
-                if (item.sellIn < 6) {
-                    increaseQuality(item);
+                if (itemBehaviour.getSellin() < 6) {
+                    itemBehaviour.increaseQuality();;
                 }
 
-                decreaseSellin(item);
+                itemBehaviour.decreaseSellin();
 
-                if (item.sellIn < 0) {
-                    qualityZero(item);
+                if (itemBehaviour.getSellin() < 0) {
+                    itemBehaviour.qualityZero();
                 }
             } else if (item.name.equals(SULFURAS)) {
                 item.quality = 80;
             } else {
-                decreaseQuality(item);
+                itemBehaviour.decreaseQuality();
 
-                decreaseSellin(item);
+                itemBehaviour.decreaseSellin();
 
-                if (item.sellIn < 0) {
-                    decreaseQuality(item);
+                if (itemBehaviour.getSellin() < 0) {
+                    itemBehaviour.decreaseQuality();
                 }
             }
-        }
-    }
-
-    private void qualityZero(Item item) {
-        item.quality = 0;
-    }
-
-    private void decreaseSellin(Item item) {
-        item.sellIn = item.sellIn - 1;
-    }
-
-    private void increaseQuality(Item item) {
-        if (item.quality < 50) {
-            item.quality = item.quality + 1;
-        }
-    }
-
-    private void decreaseQuality(Item item) {
-        if (item.quality > 0) {
-            item.quality = item.quality - 1;
         }
     }
 }
