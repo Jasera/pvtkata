@@ -2,6 +2,7 @@ package com.gildedrose;
 
 import com.gildedrose.strategy.AgedBrieStrategy;
 import com.gildedrose.strategy.BackStageStrategy;
+import com.gildedrose.strategy.DefaultStrategy;
 import com.gildedrose.strategy.SulfurasStrategy;
 
 class GildedRose {
@@ -12,6 +13,7 @@ class GildedRose {
     AgedBrieStrategy agedBrieStrategy = new AgedBrieStrategy();
     BackStageStrategy backStageStrategy = new BackStageStrategy();
     SulfurasStrategy sulfurasStrategy = new SulfurasStrategy();
+    DefaultStrategy defaultStrategy = new DefaultStrategy();
 
     Item[] items;
 
@@ -30,13 +32,7 @@ class GildedRose {
             } else if (item.name.equals(SULFURAS)) {
                 sulfurasStrategy.updateItem(itemBehaviour);
             } else {
-                itemBehaviour.decreaseQuality();
-
-                itemBehaviour.decreaseSellin();
-
-                if (itemBehaviour.getSellin() < 0) {
-                    itemBehaviour.decreaseQuality();
-                }
+                defaultStrategy.updateItem(itemBehaviour);
             }
         }
     }
