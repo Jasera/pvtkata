@@ -3,20 +3,20 @@ package com.gildedrose.strategy;
 import com.gildedrose.ItemBehaviour;
 
 public class BackStageStrategy {
-    public void updateItem(ItemBehaviour item) {
-        item.increaseQuality();
+    public void updateItem(ItemBehaviour itemBehaviour) {
+        itemBehaviour.increaseQuality();
 
-        if (item.getSellin() < 11) {
-            item.increaseQuality();
+        if (itemBehaviour.getSellin() < 11) {
+            itemBehaviour.increaseQuality();
         }
 
-        if (item.getSellin() < 6) {
-            item.increaseQuality();
+        if (itemBehaviour.getSellin() < 6) {
+            itemBehaviour.increaseQuality();
         }
-        item.decreaseSellin();
+        itemBehaviour.decreaseSellin();
 
-        if (item.getSellin() < 0) {
-            item.qualityZero();
+        if (itemBehaviour.getSellin() < 0) {
+            itemBehaviour.qualityZero();
         }
     }
 }
