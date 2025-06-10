@@ -20,24 +20,26 @@ class GildedRose {
                 if (item.sellIn < 0) {
                     increaseQuality(item);
                 }
+            } else if (item.name.equals(BACK_STAGE_PASS)) {
+                increaseQuality(item);
+
+                if (item.sellIn < 11) {
+                    increaseQuality(item);
+                }
+
+                if (item.sellIn < 6) {
+                    increaseQuality(item);
+                }
+
+                decreaseSellin(item);
+
+                if (item.sellIn < 0) {
+                    qualityZero(item);
+                }
             } else {
 
-                if (!item.name.equals(BACK_STAGE_PASS)) {
-                    if (!item.name.equals(SULFURAS)) {
-                        decreaseQuality(item);
-                    }
-                } else {
-                    increaseQuality(item);
-
-                    if (item.name.equals(BACK_STAGE_PASS)) {
-                        if (item.sellIn < 11) {
-                            increaseQuality(item);
-                        }
-
-                        if (item.sellIn < 6) {
-                            increaseQuality(item);
-                        }
-                    }
+                if (!item.name.equals(SULFURAS)) {
+                    decreaseQuality(item);
                 }
 
                 if (!item.name.equals(SULFURAS)) {
@@ -45,12 +47,8 @@ class GildedRose {
                 }
 
                 if (item.sellIn < 0) {
-                    if (!item.name.equals(BACK_STAGE_PASS)) {
-                        if (!item.name.equals(SULFURAS)) {
-                            decreaseQuality(item);
-                        }
-                    } else {
-                        qualityZero(item);
+                    if (!item.name.equals(SULFURAS)) {
+                        decreaseQuality(item);
                     }
                 }
             }
