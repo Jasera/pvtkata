@@ -1,9 +1,14 @@
 package com.gildedrose;
 
+import com.gildedrose.strategy.AgedBrieStrategy;
+
 class GildedRose {
     public static final String BACK_STAGE_PASS = "Backstage passes to a TAFKAL80ETC concert";
     public static final String AGED_BRIE = "Aged Brie";
     public static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
+
+    AgedBrieStrategy agedBrieStrategy = new AgedBrieStrategy();
+
     Item[] items;
 
     public GildedRose(Item[] items) {
@@ -15,13 +20,7 @@ class GildedRose {
             ItemBehaviour itemBehaviour = new ItemBehaviour(item);
 
             if (item.name.equals(AGED_BRIE)) {
-                itemBehaviour.increaseQuality();;
-
-                itemBehaviour.decreaseSellin();
-
-                if (itemBehaviour.getSellin() < 0) {
-                    itemBehaviour.increaseQuality();;
-                }
+                agedBrieStrategy.updateItem(itemBehaviour);
             } else if (item.name.equals(BACK_STAGE_PASS)) {
                 itemBehaviour.increaseQuality();;
 
