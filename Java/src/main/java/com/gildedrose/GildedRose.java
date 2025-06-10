@@ -12,41 +12,46 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            if (!item.name.equals(AGED_BRIE)
-                && !item.name.equals(BACK_STAGE_PASS)) {
-                if (!item.name.equals(SULFURAS)) {
-                    decreaseQuality(item);
-                }
-            } else {
+            if (item.name.equals(AGED_BRIE)) {
                 increaseQuality(item);
 
-                if (item.name.equals(BACK_STAGE_PASS)) {
-                    if (item.sellIn < 11) {
-                        increaseQuality(item);
-                    }
+                decreaseSellin(item);
 
-                    if (item.sellIn < 6) {
-                        increaseQuality(item);
+                if (item.sellIn < 0) {
+                    increaseQuality(item);
+                }
+            } else {
+
+                if (!item.name.equals(BACK_STAGE_PASS)) {
+                    if (!item.name.equals(SULFURAS)) {
+                        decreaseQuality(item);
+                    }
+                } else {
+                    increaseQuality(item);
+
+                    if (item.name.equals(BACK_STAGE_PASS)) {
+                        if (item.sellIn < 11) {
+                            increaseQuality(item);
+                        }
+
+                        if (item.sellIn < 6) {
+                            increaseQuality(item);
+                        }
                     }
                 }
-            }
 
-            if (!item.name.equals(SULFURAS)) {
-                decreaseSellin(item);
-            }
+                if (!item.name.equals(SULFURAS)) {
+                    decreaseSellin(item);
+                }
 
-            if (item.sellIn < 0) {
-                if (!item.name.equals(AGED_BRIE)) {
+                if (item.sellIn < 0) {
                     if (!item.name.equals(BACK_STAGE_PASS)) {
                         if (!item.name.equals(SULFURAS)) {
                             decreaseQuality(item);
                         }
-
                     } else {
                         qualityZero(item);
                     }
-                } else {
-                    increaseQuality(item);
                 }
             }
         }
