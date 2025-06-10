@@ -2,7 +2,7 @@ package com.gildedrose.strategy;
 
 import com.gildedrose.ItemBehaviour;
 
-public class BackStageStrategy {
+public class BackStageStrategy implements ItemStrategy {
     public void updateItem(ItemBehaviour itemBehaviour) {
         itemBehaviour.increaseQuality();
 
