@@ -1,5 +1,7 @@
 package com.gildedrose.strategy;
 
+import com.gildedrose.Item;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -34,5 +36,12 @@ class StrategySelectorTest {
         ItemStrategy itemUpdateStrategy = strategySelector.selectStrategy("RANDOM NAME");
 
         assertTrue(itemUpdateStrategy instanceof DefaultStrategy);
+    }
+
+    @Test
+    void getConjuredStrategy() {
+        ItemStrategy itemUpdateStrategy = strategySelector.selectStrategy(StrategySelector.CONJURED);
+
+        assertTrue(itemUpdateStrategy instanceof ConjuredStrategy);
     }
 }
